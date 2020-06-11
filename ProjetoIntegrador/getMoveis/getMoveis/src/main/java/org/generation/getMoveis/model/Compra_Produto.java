@@ -23,5 +23,31 @@ public class Compra_Produto {
 	@JoinColumn(name="codigoDoProduto", referencedColumnName="codigoDoProduto")	
 	private Produto produto;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Compra getCompra() {
+		return compra;
+	}
+
+	public void setCompra(Compra compra) {
+		this.compra = compra;
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+	
+	
+
 	
 }
