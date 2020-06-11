@@ -1,5 +1,6 @@
 package org.generation.getMoveis.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,12 +15,12 @@ public class Compra_Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@ManyToOne
-	@JoinColumn(name="compra_codigoDaCompra")
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="codigoDaCompra", referencedColumnName="codigoDaCompra")	
 	private Compra compra;
 	
-	@ManyToOne
-	@JoinColumn(name="produto_codigoDoProduto")	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="codigoDoProduto", referencedColumnName="codigoDoProduto")	
 	private Produto produto;
 
 	
