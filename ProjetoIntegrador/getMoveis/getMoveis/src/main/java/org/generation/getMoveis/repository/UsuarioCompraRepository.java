@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UsuarioCompraRepository extends JpaRepository<Usuario_Compra, Long>{
-	public List<Usuario_Compra> findAllByCodigoUsuarioCompraContainingIgnoreCase(String codigoUsuarioCompra);
+	//public List<Usuario_Compra> findAllByCodigoUsuarioCompraContainingIgnoreCase(String codigoUsuarioCompra);
 
 }
