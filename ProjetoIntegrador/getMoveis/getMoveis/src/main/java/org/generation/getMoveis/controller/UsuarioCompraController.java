@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/usuariocompra")
 @CrossOrigin("*")
 public class UsuarioCompraController {
 	
@@ -30,15 +30,10 @@ public class UsuarioCompraController {
 		return ResponseEntity.ok(repositoryUsuarioCompra.findAll());
 	}
 	
-	@GetMapping("/{codigoCpf}")
-	public ResponseEntity<Usuario_Compra> GetById(@PathVariable long codigoCpf){
-		return repositoryUsuarioCompra.findById(codigoCpf)
+	@GetMapping("/{id}")
+	public ResponseEntity<Usuario_Compra> GetById(@PathVariable long id){
+		return repositoryUsuarioCompra.findById(id)
 				.map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
-	}
-	
-	@GetMapping("/nome/{codigoUsuarioCompra}")
-	public ResponseEntity<List<Usuario_Compra>> GetByNome(@PathVariable String codigoUsuarioCompra){
-		return ResponseEntity.ok(repositoryUsuarioCompra.findAllByCodigoUsuarioCompraContainingIgnoreCase(codigoUsuarioCompra));
 	}
 	
 	@PostMapping
@@ -51,9 +46,9 @@ public class UsuarioCompraController {
 		return ResponseEntity.status(HttpStatus.OK).body(repositoryUsuarioCompra.save(usuarioCompra));
 	}
 	
-	@DeleteMapping("/{codigoUsuarioCompra}")
-	public void delete(@PathVariable long codigoUsuarioCompra) {
-		repositoryUsuarioCompra.deleteById(codigoUsuarioCompra);
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable long id) {
+		repositoryUsuarioCompra.deleteById(id);
 	}
 
 }
