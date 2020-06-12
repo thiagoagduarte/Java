@@ -36,6 +36,14 @@ public class CompraController {
 				.map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
+<<<<<<< HEAD
+=======
+	//@GetMapping("/compra/{codigoDaCompra}")
+	//public ResponseEntity<List<Compra>> GetByNome(@PathVariable int codigoDaCompra){
+		//return ResponseEntity.ok(repositoryCompra.findAllByCodigoDaCompraContainingIgnoreCase(codigoDaCompra));
+	//}
+	
+>>>>>>> 9dc547098ee94d690524f66d5e5be6548a060a23
 	@PostMapping
 	public ResponseEntity<Compra> post (@RequestBody Compra compra){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repositoryCompra.save(compra));
