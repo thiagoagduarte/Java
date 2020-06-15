@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Compra_Produto {
+public class CompraProduto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

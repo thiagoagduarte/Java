@@ -35,6 +35,8 @@ public class Produto {
 	@NotNull
 	@Size(min =2, max = 100)
 	private String categoria;
+	
+	private String imagem;
 
 	public long getCodigoDoProduto() {
 		return codigoDoProduto;
@@ -92,5 +94,12 @@ public class Produto {
 		this.categoria = categoria;
 	}
 
-	
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+		
 }

@@ -37,7 +37,6 @@ public class ClienteLivroController {
 				.map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
-	
 	@PostMapping
 	public ResponseEntity<ClienteLivro> post (@RequestBody ClienteLivro clientelivro){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repositoryClienteLivro.save(clientelivro));
