@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -13,24 +15,35 @@ import javax.validation.constraints.Size;
 @Table(name= "TB_USUARIO")
 public class Usuario {
 	
-	@Column(name = "codigoCpf")
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long idUsuario;
+
+	@Column(name = "codigoCpf")
 	private long codigoCpf;
 	
-
 	@NotNull
 	@Size(min =5, max = 100)
 	private String nomeCliente;
 
+	private String usuario;
+	
 	private Date dtNascimento;
 	
-	@NotNull
 	@Size(min =5, max = 100)
 	private String email;
 	
 	@NotNull
 	@Size(min =5, max = 100)
 	private String senha;
+
+	public long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
 	public long getCodigoCpf() {
 		return codigoCpf;
@@ -46,6 +59,14 @@ public class Usuario {
 
 	public void setNomeCliente(String nomeCliente) {
 		this.nomeCliente = nomeCliente;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public Date getDtNascimento() {

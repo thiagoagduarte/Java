@@ -1,9 +1,12 @@
 package org.generation.getMoveis.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.generation.getMoveis.model.UserLogin;
 import org.generation.getMoveis.model.Usuario;
 import org.generation.getMoveis.repository.UsuarioRepository;
+import org.generation.getMoveis.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +22,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
+	@Autowired
+	private UsuarioService usuarioService;
+	
+	@PostMapping("/logar")
+	public ResponseEntity<UserLogin> Autentication(@RequestBody Optional<UserLogin> user){
+		return usuarioService.Logar(user).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) {
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(usuarioService.CadastrarUsuario(usuario));
+	}
+	
 	@Autowired
 	private UsuarioRepository repositoryUsuario;
 	
@@ -30,9 +48,9 @@ public class UsuarioController {
 		return ResponseEntity.ok(repositoryUsuario.findAll());
 	}
 	
-	@GetMapping("/{codigoCpf}")
-	public ResponseEntity<Usuario> GetById(@PathVariable long codigoCpf){
-		return repositoryUsuario.findById(codigoCpf)
+	@GetMapping("/{idUsuario}")
+	public ResponseEntity<Usuario> GetById(@PathVariable long idUsuario){
+		return repositoryUsuario.findById(idUsuario)
 				.map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
@@ -51,8 +69,8 @@ public class UsuarioController {
 		return ResponseEntity.status(HttpStatus.OK).body(repositoryUsuario.save(usuario));
 	}
 	
-	@DeleteMapping("/{codigoCpf}")
-	public void delete(@PathVariable long codigoCpf) {
-		repositoryUsuario.deleteById(codigoCpf);
+	@DeleteMapping("/{idUsuario}")
+	public void delete(@PathVariable long idUsuario) {
+		repositoryUsuario.deleteById(idUsuario);
 	}
 }

@@ -16,7 +16,7 @@ public class UsuarioCompra {
 	private long id;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="codigoCpf", referencedColumnName="codigoCpf")
+	@JoinColumn(name="idUsuario", referencedColumnName="idUsuario")
 	private Usuario usuario;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
