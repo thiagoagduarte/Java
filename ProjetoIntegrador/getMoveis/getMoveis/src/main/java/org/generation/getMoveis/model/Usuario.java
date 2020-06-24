@@ -36,7 +36,7 @@ public class Usuario {
 	@NotNull
 	@Size(min =5, max = 100)
 	private String senha;
-
+	
 	public long getIdUsuario() {
 		return idUsuario;
 	}
@@ -92,7 +92,6 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 	
 }
 

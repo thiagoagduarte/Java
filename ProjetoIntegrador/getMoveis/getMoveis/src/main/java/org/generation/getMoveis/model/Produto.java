@@ -32,6 +32,9 @@ public class Produto {
 	
 	private int qtdEstoque;
 	
+	@Size(min=0, max=255)
+	private String descricaoProduto;
+	
 	@NotNull
 	@Size(min =2, max = 100)
 	private String categoria;
@@ -101,5 +104,15 @@ public class Produto {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
+
+	public String getDescricaoProduto() {
+		return descricaoProduto;
+	}
+
+	public void setDescricaoProduto(String descricaoProduto) {
+		this.descricaoProduto = descricaoProduto;
+	}
+	
+	
 		
 }
