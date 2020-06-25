@@ -40,6 +40,8 @@ public class Produto {
 	private String categoria;
 	
 	private String imagem;
+	
+	private String carrinho;
 
 	public long getCodigoDoProduto() {
 		return codigoDoProduto;
@@ -111,6 +113,14 @@ public class Produto {
 
 	public void setDescricaoProduto(String descricaoProduto) {
 		this.descricaoProduto = descricaoProduto;
+	}
+
+	public String getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(String carrinho) {
+		this.carrinho = carrinho;
 	}
 	
 	

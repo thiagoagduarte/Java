@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/produtos")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProdutoController {
 
 	@Autowired
@@ -39,6 +39,11 @@ public class ProdutoController {
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Produto>> GetByNome(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+	}
+	
+	@GetMapping("/carrinho/usuario/{carrinho}")
+	public ResponseEntity<List<Produto>> GetByCarrinho(@PathVariable String carrinho){
+		return ResponseEntity.ok(repository.findAllByCarrinhoContainingIgnoreCase(carrinho));
 	}
 	
 	@PostMapping
